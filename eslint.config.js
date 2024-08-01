@@ -7,7 +7,7 @@ export default [
     ignores: ['dist/**', 'node_modules/**', 'build/**', '.history/**'],
   },
   {
-    files: ['**/*.js', '**/*.css'],
+    files: ['**/*.js'],
     languageOptions: {
       globals: {
         ...globals.browser,
