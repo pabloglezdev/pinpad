@@ -1,0 +1,25 @@
+{
+  "name": "pinpad",
+  "version": "0.0.1",
+  "description": "Pinpad for securing some app",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloglezdev/pinpad.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\" --list-different",
+    "validate": "pnpm run prettier & pnpm run lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "eslint": "9.8.0",
+    "eslint-config-prettier": "9.1.0",
+    "husky": "^9.1.4",
+    "prettier": "3.3.3"
+  },
+  "keywords": [],
+  "author": "Pablo González González <pablo.glez.dev@gmail.com>",
+  "homepage": "https://github.com/pabloglezdev/pinpad#readme"
+}
