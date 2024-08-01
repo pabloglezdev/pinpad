@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "eslint .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\" --list-different",
-    "validate": "pnpm run prettier & pnpm run lint"
+    "validate": "pnpm run prettier & pnpm run lint",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "9.8.0",
