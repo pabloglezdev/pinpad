@@ -1,0 +1,158 @@
+@font-face {
+  font-family: "AdobeClean-Regular";
+  src: url("../assets/AdobeClean-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AdobeClean-Bold";
+  src: url("../assets/AdobeClean-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AdobeClean-Medium";
+  src: url("../assets/AdobeClean-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ds-digital";
+  src: url("../assets/ds-digital.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+  font-family: "AdobeClean-Regular", sans-serif;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-image: url("/assets/background-wall.jpg");
+}
+
+h1 {
+  font-family: "AdobeClean-Regular", sans-serif;
+  font-weight: 500;
+  font-size: 54px;
+  line-height: 67.61px;
+  text-align: center;
+  color: #747474;
+}
+
+p {
+  font-family: "AdobeClean-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #747474;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+.welcome-dialog {
+  background-color: #f0f0f0;
+  width: 834px;
+  height: 275px;
+  z-index: 1;
+  gap: 0px;
+  border-radius: 10px;
+  border: 2px solid #949494;
+  outline: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 8px 16px 8px rgba(0, 0, 0, 0.1490196078);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.5019607843);
+}
+
+.icon-close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.icon-visibility {
+  cursor: pointer;
+}
+
+.pinpad {
+  display: flex;
+  justify-content: center;
+}
+.pinpad--back {
+  z-index: 0;
+  width: 380px;
+  height: 580px;
+  border-radius: 18px;
+  background: linear-gradient(270deg, #222b3d 0%, #6a758b 100%);
+  outline: none;
+  box-shadow: 0px -14px 0px 0px #161c27 inset;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6980392157);
+  box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.2509803922);
+}
+.pinpad--front {
+  z-index: 1;
+  background-color: #364157;
+  width: 340px;
+  height: 566px;
+  border-width: 1px, 1px, 1px, 0px;
+  border-style: solid;
+  border-color: #68748a;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.pinpad--lcd {
+  z-index: 2;
+  width: 302px;
+  height: 118px;
+  background-color: #ffe4e4;
+  border: 2px solid #242d3f;
+  border-radius: 5px;
+  margin-top: 27px;
+  color: #5d6a69;
+  font-family: "ds-digital", sans-serif;
+  font-size: 40px;
+  align-items: center;
+  gap: 20px;
+}
+.pinpad--keyboard {
+  z-index: 2;
+  margin: 27px 0px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+.pinpad--button {
+  border: 2px solid rgba(0, 0, 0, 0.6980392157);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #414d66 0%, #161c27 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #ffffff;
+  text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px 2px rgba(105, 136, 198, 0.3019607843) inset;
+  box-shadow: 0px 0px 0px 3px rgba(211, 226, 255, 0.1882352941) inset;
+  box-shadow: 0px 0px 1px 1px rgba(143, 165, 208, 0.5019607843);
+}
+.pinpad--button__confirm {
+  background: linear-gradient(180deg, #6aecb0 0%, #42a484 100%);
+}
+.pinpad--button__cancel {
+  background: linear-gradient(180deg, #ef6476 0%, #cf5060 100%);
+}
+
+/*# sourceMappingURL=index.css.map */

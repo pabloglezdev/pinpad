@@ -8,6 +8,8 @@
     "url": "git+https://github.com/pabloglezdev/pinpad.git"
   },
   "scripts": {
+    "sass:watch": "sass --watch styles:styles",
+    "sass": "sass styles:dist/styles",
     "lint": "eslint .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\" --list-different",
     "validate": "pnpm run prettier & pnpm run lint",
@@ -18,7 +20,8 @@
     "eslint": "9.8.0",
     "eslint-config-prettier": "9.1.0",
     "husky": "9.1.4",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "sass": "1.77.8"
   },
   "keywords": [],
   "author": "Pablo González González <pablo.glez.dev@gmail.com>",

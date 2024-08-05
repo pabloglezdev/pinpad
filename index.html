@@ -4,11 +4,134 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Website</title>
-    <link rel="stylesheet" href="./src/index.css" />
-    <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
-    <main></main>
-    <script src="./src/index.js"></script>
+    <div id="alert"></div>
+    <section id="welcome-container" hidden>
+      <dialog id="welcome-dialog" class="welcome-dialog">
+        <image
+          class="icon-close"
+          src="./assets/close-icon.svg"
+          alt="Close icon"
+          onclick="closeModal()"
+        />
+        <h1>Bienvenido a Pinpad</h1>
+        <p>
+          Introduce un numero de 6 digitos y dale a guardar.
+          <br />
+          La proxima vez podrás usar tu numero para acceder.
+        </p>
+      </dialog>
+    </section>
+    <section id="pinpad-container" class="pinpad">
+      <div id="pinpad-back" class="pinpad pinpad--back">
+        <div id="pinpad-front" class="pinpad pinpad--front">
+          <div id="pinpad-lcd" class="pinpad pinpad--lcd">
+            Not a number
+            <image
+              class="icon-visibility"
+              src="./assets/visibility_on.svg"
+              alt="Visibility on icon"
+              onclick="toggleVisibility()"
+            />
+            <image
+              class="icon-visibility"
+              src="./assets/visibility_off.svg"
+              alt="Visibility off icon"
+              onclick="toggleVisibility()"
+              hidden
+            />
+          </div>
+          <div id="pinpad-keyboard" class="pinpad pinpad--keyboard">
+            <button
+              id="pinpad-keyboard-button-7"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              7
+            </button>
+            <button
+              id="pinpad-keyboard-button-8"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              8
+            </button>
+            <button
+              id="pinpad-keyboard-button-9"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              9
+            </button>
+            <button
+              id="pinpad-keyboard-button-4"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              4
+            </button>
+            <button
+              id="pinpad-keyboard-button-5"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              5
+            </button>
+            <button
+              id="pinpad-keyboard-button-6"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              6
+            </button>
+            <button
+              id="pinpad-keyboard-button-1"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              1
+            </button>
+            <button
+              id="pinpad-keyboard-button-2"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              2
+            </button>
+            <button
+              id="pinpad-keyboard-button-3"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              3
+            </button>
+            <button
+              id="pinpad-keyboard-button-c"
+              class="pinpad pinpad--button pinpad--button__cancel"
+              onclick="buttonClick()"
+            >
+              C
+            </button>
+            <button
+              id="pinpad-keyboard-button-0"
+              class="pinpad pinpad--button"
+              onclick="buttonClick()"
+            >
+              0
+            </button>
+            <button
+              id="pinpad-keyboard-button-ok"
+              class="pinpad pinpad--button pinpad--button__confirm"
+              onclick="buttonClick()"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript" src="./src/index.js"></script>
   </body>
 </html>
