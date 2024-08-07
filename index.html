@@ -3,24 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>Pinpad</title>
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
-    <div id="warn-message"></div>
+    <div id="message" class="message" hidden></div>
     <section id="welcome-container" hidden>
-      <dialog id="welcome-dialog" class="welcome-dialog">
+      <dialog id="welcome-dialog" class="dialog">
         <image
-          class="icon-close"
+          id="welcome-modal-close-icon"
+          class="icon icon--close"
           src="./assets/close-icon.svg"
           alt="Close icon"
-          onclick="closeModal()"
+          onclick="closeModal(this.id)"
         />
         <h1>Bienvenido a Pinpad</h1>
         <p>
           Introduce un numero de 6 digitos y dale a guardar.
           <br />
           La proxima vez podrás usar tu numero para acceder.
+        </p>
+      </dialog>
+    </section>
+    <section id="insert-container" hidden>
+      <dialog id="insert-dialog" class="dialog">
+        <image
+          id="insert-modal-close-icon"
+          class="icon icon--close"
+          src="./assets/close-icon.svg"
+          alt="Close icon"
+          onclick="closeModal(this.id)"
+        />
+        <h1>Introduce tu código</h1>
+        <p>
+          Introduce el numero de 6 digitos para continuar
+          <br />
+          (tienes 3 intentos).
         </p>
       </dialog>
     </section>
@@ -52,67 +70,31 @@
             />
           </div>
           <div id="pinpad-keyboard" class="pinpad pinpad--keyboard">
-            <button
-              id="pinpad-keyboard-button-7"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-7" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               7
             </button>
-            <button
-              id="pinpad-keyboard-button-8"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-8" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               8
             </button>
-            <button
-              id="pinpad-keyboard-button-9"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-9" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               9
             </button>
-            <button
-              id="pinpad-keyboard-button-4"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-4" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               4
             </button>
-            <button
-              id="pinpad-keyboard-button-5"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-5" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               5
             </button>
-            <button
-              id="pinpad-keyboard-button-6"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-6" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               6
             </button>
-            <button
-              id="pinpad-keyboard-button-1"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-1" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               1
             </button>
-            <button
-              id="pinpad-keyboard-button-2"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-2" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               2
             </button>
-            <button
-              id="pinpad-keyboard-button-3"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-3" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               3
             </button>
             <button
@@ -122,11 +104,7 @@
             >
               C
             </button>
-            <button
-              id="pinpad-keyboard-button-0"
-              class="pinpad pinpad--button"
-              onclick="addNumberToPin(this.id)"
-            >
+            <button id="pinpad-keyboard-button-0" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
               0
             </button>
             <button

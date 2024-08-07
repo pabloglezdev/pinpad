@@ -35,10 +35,12 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
   background-image: url('/assets/background-wall.jpg');
+  margin: 0px;
 }
 
 h1 {
@@ -57,13 +59,14 @@ p {
   line-height: 30px;
   text-align: center;
   color: #747474;
+  margin: 0px;
 }
 
 dialog::backdrop {
   backdrop-filter: blur(10px);
 }
 
-.welcome-dialog {
+.dialog {
   background-color: #f0f0f0;
   width: 834px;
   height: 275px;
@@ -79,11 +82,13 @@ dialog::backdrop {
   box-shadow: 0px 3px 4px 0px #00000080;
 }
 
-.icon-close {
-  position: absolute;
-  right: 25px;
-  top: 20px;
-  cursor: pointer;
+.icon {
+  &--close {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    cursor: pointer;
+  }
 }
 
 .icon-visibility {
@@ -152,7 +157,7 @@ dialog::backdrop {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 20px;
+    gap: 15px;
   }
 
   &--button {
@@ -161,6 +166,7 @@ dialog::backdrop {
     border: 2px solid #000000b2;
     border-radius: 6px;
     background: linear-gradient(180deg, #414d66 0%, #161c27 100%);
+    outline: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,7 +178,6 @@ dialog::backdrop {
     box-shadow: 0px 0px 1px 1px #8fa5d080;
 
     &__confirm {
-      margin: 0;
       font-size: calc(1vw + 1vh + 1vmin);
       text-align: center;
       white-space: nowrap;
@@ -185,5 +190,19 @@ dialog::backdrop {
     &__cancel {
       background: linear-gradient(180deg, #ef6476 0%, #cf5060 100%);
     }
+  }
+}
+
+.message {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 38px;
+  text-align: center;
+  align-content: center;
+
+  &--warn {
+    background-color: #ffd600;
+    border-bottom: 2px solid #c2af03;
   }
 }
