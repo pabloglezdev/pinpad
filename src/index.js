@@ -9,39 +9,31 @@ const setValue = (element, value) => element.setAttribute('value', value);
 
 const isNumber = value => value >= 0 && value <= 9;
 
-/* */
+/* functions */
 
 function changeConfirmButton() {
   const confirmButton = document.getElementById('pinpad-keyboard-button-confirm');
-  if (confirmButton.innerText === 'OK') {
-    console.log('inside');
-
-    confirmButton.innerText = 'Save';
+  if (confirmButton.textContent === 'OK') {
+    confirmButton.textContent = 'Save';
     return;
   }
-  console.log('outside');
-  confirmButton.innerText === 'OK';
-}
-const isPinCreated = window.localStorage.getItem('pin');
-
-// TODO change condition to is not created
-if (!isPinCreated) {
-  changeConfirmButton();
-
-  const welcomeContainer = document.getElementById('welcome-container');
-  welcomeContainer.hidden = false;
-
-  const welcomeDialog = document.getElementById('welcome-dialog');
-  welcomeDialog.showModal();
+  confirmButton.textContent = 'OK';
 }
 
-document.addEventListener('keydown', event => {
-  if (isNumber(event.key)) {
-    addNumberToPin(event.key);
+function init() {
+  const isPinCreated = window.localStorage.getItem('pin');
+
+  if (!isPinCreated) {
+    const welcomeContainer = document.getElementById('welcome-container');
+    welcomeContainer.hidden = false;
+
+    const welcomeDialog = document.getElementById('welcome-dialog');
+    welcomeDialog.showModal();
+
+    return;
   }
-});
-
-/* functions */
+  changeConfirmButton();
+}
 
 // eslint-disable-next-line no-unused-vars
 function closeModal() {
@@ -100,7 +92,6 @@ function addNumberToPin(value) {
   }
 
   writeCharacter(pinpadLcd, keyPressed);
-  console.log(pinpadLcd.value);
 }
 
 function savePin(pin) {
@@ -109,3 +100,13 @@ function savePin(pin) {
 
   changeConfirmButton();
 }
+
+/* */
+
+document.addEventListener('keydown', event => {
+  if (isNumber(event.key)) {
+    addNumberToPin(event.key);
+  }
+});
+
+init();
