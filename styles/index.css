@@ -1,29 +1,29 @@
 @font-face {
-  font-family: "AdobeClean-Regular";
-  src: url("../assets/AdobeClean-Regular.otf") format("opentype");
+  font-family: 'AdobeClean-Regular';
+  src: url('../assets/AdobeClean-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "AdobeClean-Bold";
-  src: url("../assets/AdobeClean-Bold.otf") format("opentype");
+  font-family: 'AdobeClean-Bold';
+  src: url('../assets/AdobeClean-Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: "AdobeClean-Medium";
-  src: url("../assets/AdobeClean-Medium.otf") format("opentype");
+  font-family: 'AdobeClean-Medium';
+  src: url('../assets/AdobeClean-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: "ds-digital";
-  src: url("../assets/ds-digital.otf") format("opentype");
+  font-family: 'ds-digital';
+  src: url('../assets/ds-digital.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 body {
-  font-family: "AdobeClean-Regular", sans-serif;
+  font-family: 'AdobeClean-Regular', sans-serif;
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -34,11 +34,11 @@ body {
   align-items: center;
   justify-content: center;
   align-content: center;
-  background-image: url("/assets/background-wall.jpg");
+  background-image: url('/assets/background-wall.jpg');
 }
 
 h1 {
-  font-family: "AdobeClean-Regular", sans-serif;
+  font-family: 'AdobeClean-Regular', sans-serif;
   font-weight: 500;
   font-size: 54px;
   line-height: 67.61px;
@@ -47,7 +47,7 @@ h1 {
 }
 
 p {
-  font-family: "AdobeClean-Regular", sans-serif;
+  font-family: 'AdobeClean-Regular', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 30px;
@@ -84,6 +84,8 @@ dialog::backdrop {
 
 .icon-visibility {
   cursor: pointer;
+  width: 35px;
+  margin-right: 10px;
 }
 
 .pinpad {
@@ -120,23 +122,36 @@ dialog::backdrop {
   border: 2px solid #242d3f;
   border-radius: 5px;
   margin-top: 27px;
-  color: #5d6a69;
-  font-family: "ds-digital", sans-serif;
-  font-size: 40px;
-  align-items: center;
   gap: 20px;
+}
+.pinpad--lcd--input {
+  width: 100%;
+  height: 50%;
+  color: #5d6a69;
+  font-family: 'ds-digital', sans-serif;
+  font-size: 40px;
+  outline: none;
+  border: 0;
+  margin-left: 10px;
+  caret-color: transparent;
+  text-align: center;
+  font-size: 64px;
 }
 .pinpad--keyboard {
   z-index: 2;
-  margin: 27px 0px;
+  width: 302px;
+  margin: 20px 0px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
+  gap: 20px;
 }
 .pinpad--button {
+  max-width: auto;
+  cursor: pointer;
   border: 2px solid rgba(0, 0, 0, 0.6980392157);
   border-radius: 6px;
+  outline: none;
   background: linear-gradient(180deg, #414d66 0%, #161c27 100%);
   display: flex;
   justify-content: center;
@@ -149,6 +164,13 @@ dialog::backdrop {
   box-shadow: 0px 0px 1px 1px rgba(143, 165, 208, 0.5019607843);
 }
 .pinpad--button__confirm {
+  margin: 0;
+  font-size: calc(1vw + 1vh + 1vmin);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
   background: linear-gradient(180deg, #6aecb0 0%, #42a484 100%);
 }
 .pinpad--button__cancel {
