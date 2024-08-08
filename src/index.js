@@ -10,12 +10,12 @@ const isNumber = value => value >= 0 && value <= 9;
 /* functions */
 
 function changeConfirmButton() {
-  const confirmButton = document.getElementById('pinpad-keyboard-button-confirm');
-  if (confirmButton.textContent === 'OK') {
-    confirmButton.textContent = 'Save';
+  const confirmKey = document.getElementById('confirm-key');
+  if (confirmKey.textContent === 'OK') {
+    confirmKey.textContent = 'Save';
     return;
   }
-  confirmButton.textContent = 'OK';
+  confirmKey.textContent = 'OK';
 }
 
 function init() {
@@ -46,14 +46,16 @@ function init() {
 }
 
 function hideMessage() {
-  const messageElement = document.getElementById('message');
-  messageElement.hidden = true;
+  const messageContainer = document.getElementById('message-container');
+  messageContainer.hidden = true;
 }
 
 function setMessage({ type, message }) {
+  const messageContainer = document.getElementById('message-container');
+  messageContainer.hidden = false;
+
   const messageElement = document.getElementById('message');
   messageElement.classList.add(`message--${type}`);
-  messageElement.hidden = false;
   messageElement.textContent = message;
 }
 

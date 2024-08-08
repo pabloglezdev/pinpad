@@ -100,6 +100,8 @@ dialog::backdrop {
 .pinpad {
   display: flex;
   justify-content: center;
+  max-width: 80vw;
+  max-height: 80vh;
 
   &--back {
     z-index: 0;
@@ -170,15 +172,17 @@ dialog::backdrop {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
-    color: #ffffff;
-    text-shadow: 2px 3px 0px #00000066;
     box-shadow: 0px 0px 5px 2px #6988c64d inset;
     box-shadow: 0px 0px 0px 3px #d3e2ff30 inset;
     box-shadow: 0px 0px 1px 1px #8fa5d080;
 
+    & p {
+      font-size: 40px;
+      color: #ffffff;
+      text-shadow: 2px 3px 0px #00000066;
+    }
+
     &__confirm {
-      font-size: calc(1vw + 1vh + 1vmin);
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
