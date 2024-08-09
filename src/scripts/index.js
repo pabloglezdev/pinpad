@@ -1,4 +1,5 @@
 /* utils */
+
 const checkLength = (value, length) => Boolean(value.length === length);
 
 const resetValue = element => element.setAttribute('value', '');
@@ -7,15 +8,23 @@ const setValue = (element, value) => element.setAttribute('value', value);
 
 const isNumber = value => value >= 0 && value <= 9;
 
+const setTextContent = (element, value) => (element.textContent = value);
+
+const hideElement = element => element.classList.add('hidden');
+
+const showElement = element => element.classList.remove('hidden');
+
+const convertStringToAsterisk = value => '*'.repeat(value.length);
+
 /* functions */
 
 function changeConfirmButton() {
   const confirmKey = document.getElementById('confirm-key');
   if (confirmKey.textContent === 'OK') {
-    confirmKey.textContent = 'Save';
+    setTextContent(confirmKey, 'Save');
     return;
   }
-  confirmKey.textContent = 'OK';
+  setTextContent(confirmKey, 'OK');
 }
 
 function init() {
@@ -23,7 +32,7 @@ function init() {
 
   if (!isPinCreated) {
     const welcomeContainer = document.getElementById('welcome-container');
-    welcomeContainer.hidden = false;
+    showElement(welcomeContainer);
 
     const welcomeDialog = document.getElementById('welcome-dialog');
     welcomeDialog.showModal();
@@ -35,11 +44,17 @@ function init() {
 
   globalPin = '';
 
+  const pinpadLcdNumbersContainer = document.getElementById('pinpad-lcd-numbers-container');
+  showElement(pinpadLcdNumbersContainer);
+
   const pinpadLcdInput = document.getElementById('pinpad-lcd-input');
   setValue(pinpadLcdInput, '');
 
+  const pinpadLcdMessageContainer = document.getElementById('pinpad-lcd-message-container');
+  hideElement(pinpadLcdMessageContainer);
+
   const insertPinContainer = document.getElementById('insert-container');
-  insertPinContainer.hidden = false;
+  showElement(insertPinContainer);
 
   const insertPinDialog = document.getElementById('insert-dialog');
   insertPinDialog.showModal();
@@ -47,16 +62,16 @@ function init() {
 
 function hideMessage() {
   const messageContainer = document.getElementById('message-container');
-  messageContainer.hidden = true;
+  hideElement(messageContainer);
 }
 
 function setMessage({ type, message }) {
   const messageContainer = document.getElementById('message-container');
-  messageContainer.hidden = false;
+  showElement(messageContainer);
 
   const messageElement = document.getElementById('message');
   messageElement.classList.add(`message--${type}`);
-  messageElement.textContent = message;
+  setTextContent(messageElement, message);
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -67,7 +82,9 @@ function closeModal(id) {
   elementDialog.close();
 
   const elementContainer = document.getElementById(`${elementName}-container`);
-  elementContainer.hidden = true;
+  hideElement(elementContainer);
+
+  isModalShown = false;
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -81,40 +98,52 @@ function toggleVisibility() {
   const pinpadLcdInput = document.getElementById('pinpad-lcd-input');
 
   if (pinpadLcdInput.value === globalPin) {
-    const pinWithAsterisks = '*'.repeat(globalPin.length);
-    setValue(pinpadLcdInput, pinWithAsterisks);
+    isPasswordShown = false;
+    setValue(pinpadLcdInput, convertStringToAsterisk(pinpadLcdInput.value));
     return;
   }
 
+  isPasswordShown = true;
   setValue(pinpadLcdInput, globalPin);
 }
 
-function addNumberToPin(value) {
+function onKeyPress(value) {
   const keyPressed = isNumber(value) ? value : value.split('-')[3];
-  const pinpadLcdInput = document.getElementById('pinpad-lcd-input');
 
-  if (keyPressed === 'cancel') {
+  const pinpadLcdInput = document.getElementById('pinpad-lcd-input');
+  const pinpadLcdMessage = document.getElementById('pinpad-lcd-message');
+  const pinpadLcdNumbersContainer = document.getElementById('pinpad-lcd-numbers-container');
+  const pinpadLcdMessageContainer = document.getElementById('pinpad-lcd-message-container');
+
+  if (keyPressed === 'cancel' || value === 'cancel') {
     globalPin = '';
     resetValue(pinpadLcdInput);
     return;
   }
 
-  if (keyPressed === 'confirm') {
+  if (keyPressed === 'confirm' || value === 'confirm') {
     const isCorrectValue = checkLength(pinpadLcdInput.value, 6);
 
     if (!isCorrectValue) {
       setMessage({ type: 'warn', message: `El pin debe contener 6 dígitos.` });
 
-      setValue(pinpadLcdInput, 'error');
+      hideElement(pinpadLcdNumbersContainer);
+
+      setTextContent(pinpadLcdMessage, 'error');
+      showElement(pinpadLcdMessageContainer);
       return;
     }
 
     hideMessage();
+
     const pin = pinpadLcdInput.value;
     const isPinCreated = window.localStorage.getItem('pin');
 
     if (!isPinCreated) {
-      setValue(pinpadLcdInput, 'saved');
+      hideElement(pinpadLcdNumbersContainer);
+
+      showElement(pinpadLcdMessageContainer);
+      setTextContent(pinpadLcdMessage, 'saved');
       savePin(pin);
       return;
     }
@@ -131,8 +160,11 @@ function addNumberToPin(value) {
     return;
   }
 
+  hideElement(pinpadLcdMessageContainer);
+
   globalPin = globalPin.concat(keyPressed);
-  setValue(pinpadLcdInput, globalPin);
+  showElement(pinpadLcdNumbersContainer);
+  isPasswordShown ? setValue(pinpadLcdInput, globalPin) : setValue(pinpadLcdInput, convertStringToAsterisk(globalPin));
 }
 
 function savePin(pin) {
@@ -167,12 +199,28 @@ function checkPin(pin) {
 /* */
 
 document.addEventListener('keydown', event => {
+  event.preventDefault();
+
+  if (isModalShown) {
+    return;
+  }
+
   if (isNumber(event.key)) {
-    addNumberToPin(event.key);
+    onKeyPress(event.key);
+  }
+
+  if (event.key === 'Enter') {
+    onKeyPress('confirm');
+  }
+
+  if (event.key === 'Escape' || event.key === 'Esc') {
+    onKeyPress('cancel');
   }
 });
 
 let globalPin = '';
 let remainingAttempts = 3;
+let isPasswordShown = true;
+let isModalShown = true;
 
 init();

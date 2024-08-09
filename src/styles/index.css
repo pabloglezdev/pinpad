@@ -28,15 +28,15 @@ body {
   width: 100%;
   overflow: hidden;
   position: relative;
-  height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
-  background-image: url("/assets/background-wall.jpg");
-  margin: 0px;
+  background-image: url("../assets/background-wall.jpg");
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -46,6 +46,7 @@ h1 {
   line-height: 67.61px;
   text-align: center;
   color: #747474;
+  margin: 0;
 }
 
 p {
@@ -62,12 +63,17 @@ dialog::backdrop {
   backdrop-filter: blur(10px);
 }
 
+.hidden {
+  display: none !important;
+}
+
 .dialog {
   background-color: #f0f0f0;
+  max-width: 80vw;
+  max-height: 80vp;
   width: 834px;
-  height: 275px;
+  min-height: 275px;
   z-index: 1;
-  gap: 0px;
   border-radius: 10px;
   border: 2px solid #949494;
   outline: none;
@@ -76,26 +82,32 @@ dialog::backdrop {
   flex-direction: column;
   box-shadow: 0px 8px 16px 8px rgba(0, 0, 0, 0.1490196078);
   box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.5019607843);
+  box-sizing: border-box;
+}
+.dialog h1 {
+  margin-bottom: 20px;
 }
 
-.icon--close {
-  position: absolute;
-  right: 25px;
-  top: 20px;
+.icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.icon {
   cursor: pointer;
+  padding: 10px;
 }
 
 .icon-visibility {
   cursor: pointer;
   width: 35px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .pinpad {
   display: flex;
   justify-content: center;
-  max-width: 80vw;
-  max-height: 80vh;
 }
 .pinpad--back {
   z-index: 0;
@@ -104,43 +116,69 @@ dialog::backdrop {
   border-radius: 18px;
   background: linear-gradient(270deg, #222b3d 0%, #6a758b 100%);
   outline: none;
-  box-shadow: 0px -14px 0px 0px #161c27 inset;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6980392157);
-  box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.2509803922);
+  box-shadow: 0px -14px 0px 0px #161c27 inset, 0px 2px 3px 0px rgba(0, 0, 0, 0.6980392157), 0px 4px 8px 1px rgba(0, 0, 0, 0.2509803922);
 }
 .pinpad--front {
   z-index: 1;
   background-color: #364157;
   width: 340px;
   height: 566px;
-  border-width: 1px, 1px, 1px, 0px;
+  border-width: 1px 1px 1px 0px;
   border-style: solid;
   border-color: #68748a;
   display: grid;
   grid-template-rows: auto 1fr;
+  box-sizing: border-box;
 }
 .pinpad--lcd {
   z-index: 2;
+  flex-grow: 1;
   width: 302px;
   height: 118px;
-  background-color: #ffe4e4;
+  background-color: #e5f3f2;
   border: 2px solid #242d3f;
+  align-items: center;
+  justify-content: space-between;
   border-radius: 5px;
+  padding: 0 10px;
   margin-top: 27px;
-  gap: 20px;
+  box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.6) inset;
+  box-sizing: border-box;
 }
 .pinpad--lcd--input {
-  width: 100%;
-  height: 50%;
-  color: #5d6a69;
   font-family: "ds-digital", sans-serif;
-  font-size: 40px;
-  outline: none;
-  border: 0;
-  margin-left: 10px;
-  caret-color: transparent;
-  text-align: center;
+  color: #5d6a69;
   font-size: 64px;
+  text-align: start;
+  width: 100%;
+  border: 0;
+  margin-top: 0;
+  margin-left: 10px;
+  background-color: transparent;
+  caret-color: transparent;
+  outline: none;
+  box-shadow: none;
+}
+.pinpad--message {
+  z-index: 2;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 302px;
+  height: 118px;
+  padding: 0;
+  margin: 0;
+  border: 2px solid #242d3f;
+  background-color: #ffe4e4;
+  border-radius: 5px;
+  margin-top: 27px;
+  box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.6) inset;
+}
+.pinpad--message p {
+  font-family: "ds-digital", sans-serif;
+  color: #5d6a69;
+  font-size: 64px;
+  text-align: center;
+  align-content: center;
 }
 .pinpad--keyboard {
   z-index: 2;
@@ -158,17 +196,16 @@ dialog::backdrop {
   border-radius: 6px;
   background: linear-gradient(180deg, #414d66 0%, #161c27 100%);
   outline: none;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 5px 2px rgba(105, 136, 198, 0.3019607843) inset;
-  box-shadow: 0px 0px 0px 3px rgba(211, 226, 255, 0.1882352941) inset;
   box-shadow: 0px 0px 1px 1px rgba(143, 165, 208, 0.5019607843);
 }
 .pinpad--button p {
   font-size: 40px;
   color: #ffffff;
   text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.4);
+}
+.pinpad--button p.confirm-key {
+  font-size: 32px;
 }
 .pinpad--button__confirm {
   text-align: center;
@@ -182,17 +219,83 @@ dialog::backdrop {
   background: linear-gradient(180deg, #ef6476 0%, #cf5060 100%);
 }
 
+.confirm-key {
+  font-size: 32px;
+}
+
 .message {
   position: absolute;
-  top: 0px;
-  width: 100%;
-  height: 38px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 38px;
   text-align: center;
   align-content: center;
+  text-wrap: balance;
+  padding: 0 10px;
 }
 .message--warn {
   background-color: #ffd600;
   border-bottom: 2px solid #c2af03;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 36px;
+    line-height: 45.07px;
+  }
+  p {
+    font-size: 20px;
+  }
+  .dialog {
+    width: 300px;
+    height: 380px;
+  }
+  .icon {
+    width: 25.5px;
+    height: 17.5px;
+  }
+  .pinpad--back {
+    width: 300px;
+    height: 457px;
+  }
+  .pinpad--front {
+    width: 267px;
+    height: 445px;
+  }
+  .pinpad--lcd {
+    width: 238px;
+    height: 93px;
+    margin-left: 0;
+  }
+  .pinpad--lcd--input {
+    width: 142px;
+    height: 50px;
+    font-size: 50px;
+  }
+  .pinpad--message {
+    width: 238px;
+    height: 93px;
+  }
+  .pinpad--message p {
+    font-size: 42px;
+  }
+  .pinpad--keyboard {
+    width: 238px;
+  }
+  .pinpad--button p {
+    font-size: 32px;
+    padding: 1px;
+  }
+  .pinpad--button p.confirm-key {
+    font-size: 26px;
+  }
+  .message {
+    font-size: 24px;
+    line-height: 30px;
+    min-height: 79px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

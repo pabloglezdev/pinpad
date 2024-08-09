@@ -8,7 +8,7 @@
     "url": "git+https://github.com/pabloglezdev/pinpad.git"
   },
   "scripts": {
-    "sass:watch": "sass --watch styles:styles",
+    "sass:watch": "sass --watch src/styles:src/styles",
     "sass": "sass styles:dist/styles",
     "lint": "eslint .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\" --list-different",

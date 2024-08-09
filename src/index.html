@@ -7,16 +7,18 @@
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body>
-    <div id="message-container" class="message" hidden><p id="message" class="message"></p></div>
-    <section id="welcome-container" hidden>
+    <div id="message-container" class="hidden message"><p id="message" class="message"></p></div>
+    <section id="welcome-container" class="hidden">
       <dialog id="welcome-dialog" class="dialog">
-        <image
-          id="welcome-modal-close-icon"
-          class="icon icon--close"
-          src="./assets/close-icon.svg"
-          alt="Close icon"
-          onclick="closeModal(this.id)"
-        />
+        <div id="icon-container" class="icon-container">
+          <image
+            id="welcome-modal-close-icon"
+            class="icon"
+            src="./assets/close-icon.svg"
+            alt="Close icon"
+            onclick="closeModal(this.id)"
+          />
+        </div>
         <h1>Bienvenido a Pinpad</h1>
         <p>
           Introduce un numero de 6 digitos y dale a guardar.
@@ -25,15 +27,17 @@
         </p>
       </dialog>
     </section>
-    <section id="insert-container" hidden>
+    <section id="insert-container" class="hidden">
       <dialog id="insert-dialog" class="dialog">
-        <image
-          id="insert-modal-close-icon"
-          class="icon icon--close"
-          src="./assets/close-icon.svg"
-          alt="Close icon"
-          onclick="closeModal(this.id)"
-        />
+        <div id="icon-container" class="icon-container">
+          <image
+            id="insert-modal-close-icon"
+            class="icon icon--close"
+            src="./assets/close-icon.svg"
+            alt="Close icon"
+            onclick="closeModal(this.id)"
+          />
+        </div>
         <h1>Introduce tu código</h1>
         <p>
           Introduce el numero de 6 digitos para continuar
@@ -45,7 +49,10 @@
     <section id="pinpad-container" class="pinpad">
       <div id="pinpad-back" class="pinpad pinpad--back">
         <div id="pinpad-front" class="pinpad pinpad--front">
-          <div id="pinpad-lcd" class="pinpad pinpad--lcd">
+          <div id="pinpad-lcd-message-container" class="pinpad pinpad--message hidden">
+            <p id="pinpad-lcd-message"></p>
+          </div>
+          <div id="pinpad-lcd-numbers-container" class="pinpad pinpad--lcd">
             <input
               id="pinpad-lcd-input"
               class="pinpad pinpad--lcd pinpad--lcd--input"
@@ -70,54 +77,54 @@
             />
           </div>
           <div id="pinpad-keyboard" class="pinpad pinpad--keyboard">
-            <button id="pinpad-keyboard-button-7" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-7" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="7-key">7</p>
             </button>
-            <button id="pinpad-keyboard-button-8" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-8" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="8-key">8</p>
             </button>
-            <button id="pinpad-keyboard-button-9" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-9" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="9-key">9</p>
             </button>
-            <button id="pinpad-keyboard-button-4" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-4" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="4-key">4</p>
             </button>
-            <button id="pinpad-keyboard-button-5" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-5" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="5-key">5</p>
             </button>
-            <button id="pinpad-keyboard-button-6" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-6" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="6-key">6</p>
             </button>
-            <button id="pinpad-keyboard-button-1" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-1" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="1-key">1</p>
             </button>
-            <button id="pinpad-keyboard-button-2" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-2" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="2-key">2</p>
             </button>
-            <button id="pinpad-keyboard-button-3" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-3" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="3-key">3</p>
             </button>
             <button
               id="pinpad-keyboard-button-cancel"
               class="pinpad pinpad--button pinpad--button__cancel"
-              onclick="addNumberToPin(this.id)"
+              onclick="onKeyPress(this.id)"
             >
               <p id="cancel-key">C</p>
             </button>
-            <button id="pinpad-keyboard-button-0" class="pinpad pinpad--button" onclick="addNumberToPin(this.id)">
+            <button id="pinpad-keyboard-button-0" class="pinpad pinpad--button" onclick="onKeyPress(this.id)">
               <p id="0-key">0</p>
             </button>
             <button
               id="pinpad-keyboard-button-confirm"
               class="pinpad pinpad--button pinpad--button__confirm"
-              onclick="addNumberToPin(this.id)"
+              onclick="onKeyPress(this.id)"
             >
-              <p id="confirm-key">Save</p>
+              <p id="confirm-key" class="confirm-key">Save</p>
             </button>
           </div>
         </div>
       </div>
     </section>
-    <script type="text/javascript" src="./src/index.js"></script>
+    <script type="text/javascript" src="./scripts/index.js"></script>
   </body>
 </html>
