@@ -64,7 +64,7 @@ p {
 }
 
 dialog::backdrop {
-  backdrop-filter: blur(10px);
+  backdrop-filter: brightness(50%);
 }
 
 .hidden {
