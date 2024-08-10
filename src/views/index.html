@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pinpad</title>
-    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/index.scss" />
   </head>
   <body>
     <div id="message-container" class="hidden message"><p id="message" class="message"></p></div>
     <section id="welcome-container" class="hidden">
       <dialog id="welcome-dialog" class="dialog">
         <div id="icon-container" class="icon-container">
-          <image
+          <img
             id="welcome-modal-close-icon"
             class="icon"
             src="../assets/close-icon.svg"
@@ -30,7 +30,7 @@
     <section id="insert-container" class="hidden">
       <dialog id="insert-dialog" class="dialog">
         <div id="icon-container" class="icon-container">
-          <image
+          <img
             id="insert-modal-close-icon"
             class="icon icon--close"
             src="../assets/close-icon.svg"
@@ -60,14 +60,14 @@
               maxlength="6"
               readonly
             />
-            <image
+            <img
               id="visibility-on-icon"
               class="icon-visibility"
               src="../assets/visibility_on.svg"
               alt="Visibility on icon"
               onclick="toggleVisibility()"
             />
-            <image
+            <img
               id="visibility-off-icon"
               class="icon-visibility"
               src="../assets/visibility_off.svg"
