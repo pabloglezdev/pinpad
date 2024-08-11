@@ -74,7 +74,6 @@ function setMessage({ type, message }) {
   setTextContent(messageElement, message);
 }
 
-// eslint-disable-next-line no-unused-vars
 function closeModal(id) {
   console.log(id);
   const elementName = id.split('-')[0];
@@ -88,7 +87,6 @@ function closeModal(id) {
   isModalShown = false;
 }
 
-// eslint-disable-next-line no-unused-vars
 function toggleVisibility() {
   const visibilityOnIcon = document.getElementById('visibility-on-icon');
   visibilityOnIcon.hidden = !visibilityOnIcon.hidden;
