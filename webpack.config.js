@@ -1,22 +1,17 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin';
-// import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'production',
-  // entry: './src/scripts/index.js',
   output: {
     path: path.join(__dirname, 'dist/'),
     clean: true,
   },
   plugins: [
-    // new HtmlWebpackPlugin({
-    //   template: './src/views/index.html',
-    // }),
     new HtmlBundlerPlugin({
       entry: {
         index: './src/views/index.html',

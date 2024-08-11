@@ -75,7 +75,6 @@ function setMessage({ type, message }) {
 }
 
 function closeModal(id) {
-  console.log(id);
   const elementName = id.split('-')[0];
 
   const elementDialog = document.getElementById(`${elementName}-dialog`);
@@ -226,18 +225,14 @@ document.addEventListener('keydown', event => {
 
 init();
 
-/* export */
+/* expose */
 
-export {
-  isModalShown,
-  isNumber,
-  changeConfirmButton,
-  init,
-  hideMessage,
-  setMessage,
-  closeModal,
-  toggleVisibility,
-  onKeyPress,
-  savePin,
-  checkPin,
-};
+window.changeConfirmButton = changeConfirmButton;
+window.init = init;
+window.hideMessage = hideMessage;
+window.setMessage = setMessage;
+window.closeModal = closeModal;
+window.toggleVisibility = toggleVisibility;
+window.onKeyPress = onKeyPress;
+window.savePin = savePin;
+window.checkPin = checkPin;
