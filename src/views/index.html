@@ -10,14 +10,8 @@
     <div id="message-container" class="hidden message"><p id="message" class="message"></p></div>
     <section id="welcome-container" class="hidden">
       <dialog id="welcome-dialog" class="dialog">
-        <div id="icon-container" class="icon-container">
-          <img
-            id="welcome-modal-close-icon"
-            class="icon"
-            src="../assets/close-icon.svg"
-            alt="Close icon"
-            onclick="closeModal(this.id)"
-          />
+        <div id="icon-container" class="icon-container" onclick="closeModal(this.id)">
+          <img id="welcome-modal-close-icon" class="icon" src="../assets/close-icon.svg" alt="Close icon" />
         </div>
         <h1>Bienvenido a Pinpad</h1>
         <p>
@@ -29,14 +23,8 @@
     </section>
     <section id="insert-container" class="hidden">
       <dialog id="insert-dialog" class="dialog">
-        <div id="icon-container" class="icon-container">
-          <img
-            id="insert-modal-close-icon"
-            class="icon icon--close"
-            src="../assets/close-icon.svg"
-            alt="Close icon"
-            onclick="closeModal(this.id)"
-          />
+        <div id="icon-container" class="icon-container" onclick="closeModal(this.id)">
+          <img id="insert-modal-close-icon" class="icon icon--close" src="../assets/close-icon.svg" alt="Close icon" />
         </div>
         <h1>Introduce tu código</h1>
         <p>

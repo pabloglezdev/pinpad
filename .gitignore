@@ -1,3 +1,5 @@
 node_modules
 dist
 .history
+src/styles/index.css
+src/styles/idnex.css.map

@@ -76,6 +76,7 @@ function setMessage({ type, message }) {
 
 // eslint-disable-next-line no-unused-vars
 function closeModal(id) {
+  console.log(id);
   const elementName = id.split('-')[0];
 
   const elementDialog = document.getElementById(`${elementName}-dialog`);
@@ -196,7 +197,14 @@ function checkPin(pin) {
   window.location.replace('https://www.codebay-innovation.com/');
 }
 
-/* */
+/* global */
+
+let globalPin = '';
+let remainingAttempts = 3;
+let isPasswordShown = true;
+let isModalShown = true;
+
+/* init */
 
 document.addEventListener('keydown', event => {
   event.preventDefault();
@@ -218,9 +226,20 @@ document.addEventListener('keydown', event => {
   }
 });
 
-let globalPin = '';
-let remainingAttempts = 3;
-let isPasswordShown = true;
-let isModalShown = true;
-
 init();
+
+/* export */
+
+export {
+  isModalShown,
+  isNumber,
+  changeConfirmButton,
+  init,
+  hideMessage,
+  setMessage,
+  closeModal,
+  toggleVisibility,
+  onKeyPress,
+  savePin,
+  checkPin,
+};
